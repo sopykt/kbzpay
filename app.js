@@ -79,9 +79,10 @@ app.post('/', function(req, res) {
 });
 
 app.post('/notifyurl', function (req, res) {
-var gotthis = req.body;
+var gotthis = req.body.Request.trade_status;
 res.send(gotthis);
 console.log(gotthis);
+console.log(req.body.Request.trade_status);
 });
 
 const port =2000;
