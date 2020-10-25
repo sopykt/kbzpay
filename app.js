@@ -19,9 +19,7 @@ app.get('/*', (req, res) => {
 res.sendFile(path.join(__dirname, './index.html'));
 })
 
-app.post('/notifyurl', (req, res) => {
-console.log(req.body);
-})
+
 
 app.post('/', function(req, res) {
   //res.sendStatus(200);
@@ -79,6 +77,9 @@ app.post('/', function(req, res) {
   console.log('user clicked at ' + timestamp + " and merchorderid: " + merchorderid + " and nonce_str: " + nonce_str + " and to hash: " + tohash + " hashed: " + hashed + " tokbz: " + tokbzjsonstring);
 });
 
+app.post('/notifyurl', (req, res) => {
+console.log(req.body);
+})
 
 const port =2000;
 app.listen(port,()=>{
