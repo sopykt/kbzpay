@@ -77,12 +77,11 @@ app.post('/', function(req, res) {
   console.log('user clicked at ' + timestamp + " and merchorderid: " + merchorderid + " and nonce_str: " + nonce_str + " and to hash: " + tohash + " hashed: " + hashed + " tokbz: " + tokbzjsonstring);
 });
 
-app.post('/notifyurl', (req, res) => {
-res.writeHead(200, {'Content-Type': 'text/plain'});
-res.write("I got");
-console.log(req.body);
-res.end();
-})
+app.post('/notifyurl', function (req, res) {
+var gotthis = req.body;
+res.send(gotthis);
+console.log(gotthis);
+});
 
 const port =2000;
 app.listen(port,()=>{
