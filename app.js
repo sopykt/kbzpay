@@ -80,13 +80,8 @@ app.post('/', function(req, res) {
 
 app.post('/notifyurl', function (req, res) {
 
-if(req.body.Request.trade_status == 'PAY_SUCCESS'){
-  console.log(req.body);
-  res.send('success');
-} else {
   console.log(req.body);
   res.send(req.body);
-}
 
 });
 
