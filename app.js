@@ -23,6 +23,7 @@ res.sendFile(path.join(__dirname, './index.html'));
 app.post('/', function(req, res) {
   //res.sendStatus(200);
   var timestamp = Math.floor((new Date()).getTime() / 1000);
+  var merchorderid = timestamp + "SP";
 
   function generateRandomString(length) {
   var text = "";
@@ -35,11 +36,11 @@ app.post('/', function(req, res) {
   }
   var nonce_str = generateRandomString(20);
 
-  var tohash = "appid=kpb67f5efda76b481998645ef28ca356&callback_info=https://fbvid.soepaing.com/callbackurl&merch_code=200106&merch_order_id=SP103456&method=kbz.payment.precreate&nonce_str=" + nonce_str + "&notify_url=https://fbvid.soepaing.com/notifyurl&timeout_express=100m&timestamp=" + timestamp + "&total_amount=20000&trade_type=PAY_BY_QRCODE&trans_currency=MMK&version=1.0&key=1be73b08e9f3215020aa88d28a494b08";
+  var tohash = "appid=kpb67f5efda76b481998645ef28ca356&callback_info=https://fbvid.soepaing.com/callbackurl&merch_code=200106&merch_order_id=" + merchorderid + "&method=kbz.payment.precreate&nonce_str=" + nonce_str + "&notify_url=https://fbvid.soepaing.com/notifyurl&timeout_express=100m&timestamp=" + timestamp + "&total_amount=20000&trade_type=PAY_BY_QRCODE&trans_currency=MMK&version=1.0&key=1be73b08e9f3215020aa88d28a494b08";
 
   var hashed = sha256(tohash);
 
-  var tokbzjson = { "Request": { "timestamp": timestamp, "notify_url": "https://fbvid.soepaing.com/notifyurl", "method": "kbz.payment.precreate", "nonce_str": nonce_str, "sign_type": "SHA256", "sign": hashed, "version": "1.0", "biz_content": { "merch_order_id": "SP103456", "merch_code": "200106", "appid": "kpb67f5efda76b481998645ef28ca356", "trade_type": "PAY_BY_QRCODE", "total_amount": "20000", "trans_currency": "MMK", "timeout_express": "100m", "callback_info": "https://fbvid.soepaing.com/callbackurl" } } }
+  var tokbzjson = { "Request": { "timestamp": timestamp, "notify_url": "https://fbvid.soepaing.com/notifyurl", "method": "kbz.payment.precreate", "nonce_str": nonce_str, "sign_type": "SHA256", "sign": hashed, "version": "1.0", "biz_content": { "merch_order_id": merchorderid, "merch_code": "200106", "appid": "kpb67f5efda76b481998645ef28ca356", "trade_type": "PAY_BY_QRCODE", "total_amount": "20000", "trans_currency": "MMK", "timeout_express": "100m", "callback_info": "https://fbvid.soepaing.com/callbackurl" } } }
   var tokbzjsonstring = JSON.stringify(tokbzjson);
   var url = "http://api.kbzpay.com/payment/gateway/uat/precreate"
 
@@ -69,7 +70,7 @@ app.post('/', function(req, res) {
 
  })
 
-  console.log('user clicked at ' + timestamp + " and nonce_str: " + nonce_str + " and to hash: " + tohash + " hashed: " + hashed + " tokbz: " + tokbzjsonstring);
+  console.log('user clicked at ' + timestamp + " and merchorderid: " + merchorderid + " and nonce_str: " + nonce_str + " and to hash: " + tohash + " hashed: " + hashed + " tokbz: " + tokbzjsonstring);
 });
 
 
