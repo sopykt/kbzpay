@@ -79,10 +79,15 @@ app.post('/', function(req, res) {
 });
 
 app.post('/notifyurl', function (req, res) {
-var gotthis = req.body.Request.trade_status;
-res.send('success');
-console.log(gotthis);
-console.log(req.body.Request.trade_status);
+
+if(req.body.Request.trade_status == 'PAY_SUCCESS'){
+  console.log(req.body);
+  res.send('success');
+} else {
+  console.log(req.body);
+  res.send(req.body);
+}
+
 });
 
 const port =2000;
