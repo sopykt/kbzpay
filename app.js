@@ -58,6 +58,11 @@ app.post('/', function(req, res) {
               var beforecode = '<!DOCTYPE html><html lang="en" dir="ltr"> <head> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <meta charset="utf-8"> <title>Scan to Pay</title> <style>.center { padding: 70px 0; border: 3px solid green; text-align: center;}</style> </head> <body> <div class="card center" style="width: 18rem;"> <img class="card-img-top" src="'
               var aftercode = '" alt="Card image cap"> <div class="card-body"> <h5 class="card-title">Scan Here to Pay</h5> <p class="card-text">KBZ Pay ဖြင့်ငွေပေးချေရန် အထက်ပါ QR Code ကို Scan ဖတ်ပါ။</p> <a href="https://play.google.com/store/apps/details?id=com.kbzbank.kpaycustomer&hl=my" class="btn btn-primary">Download KBZ Pay App</a> </div> </div> </body></html>'
               res.write(beforecode + url + aftercode);
+
+              app.post('/notifyurl', (req, res) => {
+              console.log(req.body)
+              });
+
               res.end();
               })
          }
