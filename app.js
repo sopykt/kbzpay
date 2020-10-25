@@ -81,7 +81,7 @@ app.post('/', function(req, res) {
 app.post('/notifyurl', function (req, res) {
 
   console.log(req.body);
-  res.send(req.body);
+  res.send('success');
 
 });
 
