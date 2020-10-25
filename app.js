@@ -62,7 +62,7 @@ app.post('/', function(req, res) {
 
 
 
-              res.end();
+              //res.end();
               })
          }
          else {
@@ -78,7 +78,10 @@ app.post('/', function(req, res) {
 });
 
 app.post('/notifyurl', (req, res) => {
+res.writeHead(200, {'Content-Type': 'text/plain'});
+res.write("I got");
 console.log(req.body);
+res.end();
 })
 
 const port =2000;
