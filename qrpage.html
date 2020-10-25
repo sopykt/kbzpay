@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    /*--------------------
+General Style
+---------------------*/
+
+body,
+html {
+  height: 100%;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*--------------------
+Text
+---------------------*/
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 42px;
+    color: #6d819c;
+    text-align: left;
+}
+
+h2 {
+  font-size: 28px;
+  letter-spacing: -2px;
+    color: #6d819c;
+    text-align: center;
+  line-height: 2.8;
+}
+
+h4 {
+  font-size: 16px;
+    color: #7495aa;
+  letter-spacing: 1px;
+    text-align: left;
+  line-height: 2;
+}
+
+h5 {
+  font-size: 11px;
+  font-weight: 700;
+    color: #c9d6de;
+  letter-spacing: 1px;
+    text-align: left;
+  text-transform: uppercase;
+}
+
+h5 > span {
+  margin-left: 87px;
+}
+
+h5.total {
+  margin-top: 20px;
+}
+
+ul.order-list {
+  width: 100%;
+  list-style: none;
+  padding-right: 12px;
+}
+
+ul.order-list li {
+  height: 60px;
+  margin-left: -40px;
+  overflow: hidden;
+  border-bottom: 1px solid #e9ebf2;
+}
+
+ul.order-list li > img {
+  width: 60px;
+  height: 60px;
+  float: left;
+}
+
+ul.order-list li > h4 {
+  margin-top: 16px;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-align: right;
+  
+  -webkit-transition: all 0.3s;
+     -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+       -o-transition: all 0.3s;
+          transition: all 0.3s;
+}
+
+ul.order-list li:hover > h4 {
+  margin-top: 8px;
+}
+
+ul.order-list li > h5 {
+  margin-top: 0px;
+  text-align: right;
+  display: none;
+  
+  -webkit-transition: all 0.3s;
+     -moz-transition: all 0.3s;
+      -ms-transition: all 0.3s;
+       -o-transition: all 0.3s;
+          transition: all 0.3s;
+}
+
+ul.order-list li:hover > h5 {
+  margin-top: 3px;
+  display: block; 
+}
+
+</style>
+</head>
+<body>
+   
+<div class="container"> 
+  <h1><center>Checkout</center></h1>
+  <div class="row">
+    <div class='col-md-8 offset-md-2'>
+      <div class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class="col-md-6" style="border-right:1px solid #e9ebf2">
+              <h2>Order Summary</h2>
+              <h5>Order #0101</h5>
+              <ul class='order-list'>
+                <li><img src='http://images.nike.com/is/image/DotCom/PDP_THUMB/JORDAN-ECLIPSE-724010_401_A_PREM.jpg'><h4>Jordan Eclipse</h4><h5>110,000 MMK</h5></li>
+                <li><img src='http://images.nike.com/is/image/DotCom/PDP_THUMB/Nike-Futura-True-2-Adjustable-Hat-584169_451_A.jpg'><h4>Nike Snapback</h4><h5>28,000 MMK</h5></li>
+              </ul>
+              <h5>Shipping</h5><h4> 9,500 MMK</h4>
+              <h5 class='total'>Total</h5><h1> 147,500 MMK</h1>
+            </div>
+            <div class="col-md-6">
+              <h2>Payment Method</h2>
+              <h5>Please choose one of the following payment options</h5> <br>
+              <div><center>
+<div>
+  <p>Taken from wikpedia</p>
+  <img src="toreplace" alt="Red dot" />
+</div>
+                  <img src="https://www.kbzpay.com/wp-content/uploads/sites/9/2020/04/blue-L.png" width="100">
+                  <img src="https://svgshare.com/i/7fu.svg" width="120" style="margin-bottom:5px">
+              </center>       
+              </div>
+            </div>
+           </div> 
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+</div>
+    
+</body>
+</html>
