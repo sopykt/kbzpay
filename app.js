@@ -19,6 +19,9 @@ app.get('/*', (req, res) => {
 res.sendFile(path.join(__dirname, './index.html'));
 })
 
+app.post('/notifyurl', (req, res) => {
+console.log(req.body);
+})
 
 app.post('/', function(req, res) {
   //res.sendStatus(200);
@@ -59,9 +62,7 @@ app.post('/', function(req, res) {
               var aftercode = '" alt="Card image cap"> <div class="card-body"> <h5 class="card-title">Scan Here to Pay</h5> <p class="card-text">KBZ Pay ဖြင့်ငွေပေးချေရန် အထက်ပါ QR Code ကို Scan ဖတ်ပါ။</p> <a href="https://play.google.com/store/apps/details?id=com.kbzbank.kpaycustomer&hl=my" class="btn btn-primary">Download KBZ Pay App</a> </div> </div> </body></html>'
               res.write(beforecode + url + aftercode);
 
-              app.post('/notifyurl', (req, res) => {
-              console.log(req.body)
-              });
+
 
               res.end();
               })
