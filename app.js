@@ -13,6 +13,7 @@ const replace = require('replace-in-file');
 app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
 app.use(bodyParser.json())
+app.enable('trust proxy');
 
 
 app.get('/*', (req, res) => {
