@@ -62,17 +62,17 @@ app.post('/', function(req, res) {
               res.write(beforecode + url + aftercode);
 
               // new Request
-              var timestamp2 = Math.floor((new Date()).getTime() / 1000);
-              var nonce_str2 = generateRandomString(20);
-              var tohash2 = "appid=kpb67f5efda76b481998645ef28ca356&merch_code=200106&merch_order_id=" + merchorderid + "&method=kbz.payment.queryorder&nonce_str=" + nonce_str2 + "&timestamp=" + timestamp2 + "&version=3.0"
-              var hashed2 = sha256(tohash2);
-              var tokbzquery = { "Request": { "timestamp": timestamp2, "nonce_str": nonce_str2, "method": "kbz.payment.queryorder", "sign_type": "SHA256", "sign": hashed2, "version": "3.0", "biz_content": { "appid": "kpb67f5efda76b481998645ef28ca356", "merch_code": "200106", "merch_order_id": merchorderid } } }
-              var url2 = "http://api.kbzpay.com/payment/gateway/uat/queryorder"
-              console.log(tohash2);
+              var querytimestamp = Math.floor((new Date()).getTime() / 1000);
+              var querynonce_str = generateRandomString(20);
+              var querytohash = "appid=kpb67f5efda76b481998645ef28ca356&merch_code=200106&merch_order_id=" + merchorderid + "&method=kbz.payment.queryorder&nonce_str=" + querynonce_str + "&timestamp=" + querytimestamp + "&version=3.0"
+              var queryhashed = sha256(querytohash);
+              var tokbzquery = { "Request": { "timestamp": querytimestamp, "nonce_str": querynonce_str, "method": "kbz.payment.queryorder", "sign_type": "SHA256", "sign": queryhashed, "version": "3.0", "biz_content": { "appid": "kpb67f5efda76b481998645ef28ca356", "merch_code": "200106", "merch_order_id": merchorderid } } }
+              var queryurl = "http://api.kbzpay.com/payment/gateway/uat/queryorder"
+              console.log(querytohash);
               console.log(tokbzquery);
 
               request({
-                     url: url2,
+                     url: queryurl,
                      method: "POST",
                      json: tokbzquery
                  }, function (error, response, body) {
