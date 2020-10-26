@@ -71,38 +71,25 @@ app.post('/', function(req, res) {
               console.log(querytohash);
               console.log(tokbzquery);
 
-              // loop Request
-              let retry = (function() {
-                let count = 0;
+              request({
+                     url: queryurl,
+                     method: "POST",
+                     json: tokbzquery
+                 }, function (error, response, body) {
+                     if (!error && response.statusCode === 200) {
+                         console.log(body)
+                         //var obj = JSON.parse(body);
+                         //var qrstring = obj.Response.nonce_str
 
-                return function(max, timeout, next) {
-                  request({
-                         url: queryurl,
-                         method: "POST",
-                         json: tokbzquery
-                     }, function (error, response, body) {
-                    if (!error || response.statusCode == 200 || body.Response.result == 'FAIL') {
-                      console.log(body);
+                     }
+                     else {
 
-                      if (count++ < max) {
-                        return setTimeout(function() {
-                          retry(max, timeout, next);
-                        }, timeout);
-                      } else {
-                        return next(new Error('max retries reached'));
-                      }
-                    }
+                         console.log("error: " + error)
+                         console.log("response.statusCode: " + response.statusCode)
+                         console.log("response.statusText: " + response.statusText)
+                     }
 
-                    console.log(body);
-                    next(null, body);
-                  });
-                }
-              })();
-
-              retry(20, 1000, function(err, body) {
-                  do(something);
-              });
-              // end loop Request
+              })
               // end new Request
 
               res.end();
