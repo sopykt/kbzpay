@@ -61,7 +61,34 @@ app.post('/', function(req, res) {
               var aftercode = '" alt="Card image cap"> <div class="card-body"> <h5 class="card-title">Scan Here to Pay</h5> <p class="card-text">KBZ Pay ဖြင့်ငွေပေးချေရန် အထက်ပါ QR Code ကို Scan ဖတ်ပါ။</p> <a href="https://play.google.com/store/apps/details?id=com.kbzbank.kpaycustomer&hl=my" class="btn btn-primary">Download KBZ Pay App</a> </div> </div> </body></html>'
               res.write(beforecode + url + aftercode);
 
+              // new Request
+              var timestamp2 = Math.floor((new Date()).getTime() / 1000);
+              var nonce_str2 = generateRandomString(20);
+              var tohash2 = "appid=kpb67f5efda76b481998645ef28ca356&merch_code=200106&merch_order_id=" + merchorderid + "&method=kbz.payment.queryorder&nonce_str=" + nonce_str2 + "&timestamp=" + timestamp2 + "&version=3.0"
+              var hashed2 = sha256(tohash2);
+              var tokbzquery = { "Request": { "timestamp": timestamp2, "nonce_str": nonce_str2, "method": "kbz.payment.queryorder", "sign_type": "SHA256", "sign": hashed2, "version": "3.0", "biz_content": { "appid": "kpb67f5efda76b481998645ef28ca356", "merch_code": "200106", "merch_order_id": merchorderid } } }
+              var url2 = "http://api.kbzpay.com/payment/gateway/uat/queryorder"
 
+              request({
+                     url: url2,
+                     method: "POST",
+                     json: tokbzquery
+                 }, function (error, response, body) {
+                     if (!error && response.statusCode === 200) {
+                         console.log(body)
+                         //var obj = JSON.parse(body);
+                         //var qrstring = obj.Response.nonce_str
+
+                     }
+                     else {
+
+                         console.log("error: " + error)
+                         console.log("response.statusCode: " + response.statusCode)
+                         console.log("response.statusText: " + response.statusText)
+                     }
+
+              })
+              // end new Request
 
               res.end();
               })
