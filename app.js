@@ -61,7 +61,12 @@ app.post('/', function(req, res) {
               var aftercode = '" alt="Card image cap"> <div class="card-body"> <h5 class="card-title">Scan Here to Pay</h5> <p class="card-text">KBZ Pay ဖြင့်ငွေပေးချေရန် အထက်ပါ QR Code ကို Scan ဖတ်ပါ။</p> <a href="https://play.google.com/store/apps/details?id=com.kbzbank.kpaycustomer&hl=my" class="btn btn-primary">Download KBZ Pay App</a> </div> </div> </body></html>'
               res.write(beforecode + url + aftercode);
 
+              app.post('/notifyurl', function (requ, resu) {
 
+                console.log(requ.body);
+                resu.send('success');
+
+              });
 
               res.end();
               })
@@ -78,12 +83,7 @@ app.post('/', function(req, res) {
   console.log('user clicked at ' + timestamp + " and merchorderid: " + merchorderid + " and nonce_str: " + nonce_str + " and to hash: " + tohash + " hashed: " + hashed + " tokbz: " + tokbzjsonstring);
 });
 
-app.post('/notifyurl', function (req, res) {
 
-  console.log(req.body);
-  res.send('success');
-
-});
 
 const port =2000;
 app.listen(port,()=>{
