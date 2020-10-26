@@ -64,7 +64,7 @@ app.post('/', function(req, res) {
               // new Request
               var querytimestamp = Math.floor((new Date()).getTime() / 1000);
               var querynonce_str = generateRandomString(20);
-              var querytohash = "appid=kpb67f5efda76b481998645ef28ca356&merch_code=200106&merch_order_id=" + merchorderid + "&method=kbz.payment.queryorder&nonce_str=" + querynonce_str + "&timestamp=" + querytimestamp + "&version=3.0"
+              var querytohash = "appid=kpb67f5efda76b481998645ef28ca356&merch_code=200106&merch_order_id=" + merchorderid + "&method=kbz.payment.queryorder&nonce_str=" + querynonce_str + "&timestamp=" + querytimestamp + "&version=3.0&key=1be73b08e9f3215020aa88d28a494b08"
               var queryhashed = sha256(querytohash);
               var tokbzquery = { "Request": { "timestamp": querytimestamp, "nonce_str": querynonce_str, "method": "kbz.payment.queryorder", "sign_type": "SHA256", "sign": queryhashed, "version": "3.0", "biz_content": { "appid": "kpb67f5efda76b481998645ef28ca356", "merch_code": "200106", "merch_order_id": merchorderid } } }
               var queryurl = "http://api.kbzpay.com/payment/gateway/uat/queryorder"
