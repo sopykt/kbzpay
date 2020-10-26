@@ -68,6 +68,8 @@ app.post('/', function(req, res) {
               var hashed2 = sha256(tohash2);
               var tokbzquery = { "Request": { "timestamp": timestamp2, "nonce_str": nonce_str2, "method": "kbz.payment.queryorder", "sign_type": "SHA256", "sign": hashed2, "version": "3.0", "biz_content": { "appid": "kpb67f5efda76b481998645ef28ca356", "merch_code": "200106", "merch_order_id": merchorderid } } }
               var url2 = "http://api.kbzpay.com/payment/gateway/uat/queryorder"
+              console.log(tohash2);
+              console.log(tokbzquery);
 
               request({
                      url: url2,
